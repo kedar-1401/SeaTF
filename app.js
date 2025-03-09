@@ -16,14 +16,14 @@ app.use(cors(corsOptions));
 app.use(express.json())
 
 app.get('/',(req,res)=>{
-    res.send({message:"Welcome to CTF"})
+    res.send({message:"Welcome to SeaTF"})
 })
 
-app.get('/Auth', (req, res) => {
+app.get('/SeaTF', (req, res) => {
   const authHeader = req.headers.authorization;
   
   if (authHeader === process.env.AUTHCODE) {
-      res.json({ message: 'Success', url: 'https://example.com' });
+      res.json({ message: 'Success', url: process.env.FLAG_URL });
   } else {
       res.status(403).json({ error: 'Wrong credentials' });
   }
