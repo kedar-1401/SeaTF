@@ -3,7 +3,7 @@ const app=express();
 const PORT=5000;
 const cors=require('cors')
 
-
+require('dotenv').config()
 var corsOptions = {
   origin: 'http://localhost:3000',
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
@@ -20,8 +20,8 @@ app.get('/',(req,res)=>{
 
 app.get('/Auth', (req, res) => {
   const authHeader = req.headers.authorization;
-
-  if (authHeader === '666') {
+  
+  if (authHeader === process.env.AUTHCODE) {
       res.json({ message: 'Success', url: 'https://example.com' });
   } else {
       res.status(403).json({ error: 'Wrong credentials' });
