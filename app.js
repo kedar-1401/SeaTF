@@ -1,9 +1,10 @@
 const express =require('express');
 const app=express();
-const PORT=5000;
+require('dotenv').config()
+
+const PORT=process.env.PORT;
 const cors=require('cors')
 
-require('dotenv').config()
 var corsOptions = {
   origin: 'http://localhost:3000',
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
